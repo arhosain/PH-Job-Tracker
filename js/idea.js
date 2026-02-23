@@ -10,6 +10,16 @@ document.addEventListener('click', function (event) {
   // INTERVIEW
   if (event.target.classList.contains('interviewBtn')) {
     const mainCard = event.target.closest('.box');
+
+        const currentStatus = mainCard.querySelector('.status').innerText;
+   if (currentStatus === 'INTERVIEW') {
+      return; // STOP duplicate
+   }
+
+
+    
+
+    
     const copyCard = mainCard.cloneNode(true);
 
     removeFromSection(mainCard, rejectedHistory);
@@ -35,6 +45,15 @@ document.addEventListener('click', function (event) {
   // REJECTED
   if (event.target.classList.contains('rejectedBtn')) {
     const mainCard = event.target.closest('.box');
+
+   const currentStatus = mainCard.querySelector('.status').innerText;
+    if (currentStatus === 'REJECTED') {
+      return; // STOP duplicate
+   }
+
+
+
+
     const copyCard = mainCard.cloneNode(true);
 
     removeFromSection(mainCard, interviewHistory);
@@ -76,3 +95,14 @@ function removeFromSection(mainCard, section) {
 }
 
 
+
+
+
+// delete btn 
+
+
+document.addEventListener('click', function (event) {
+  if (event.target.classList.contains('btn-delete')) {
+    
+  }
+  })
