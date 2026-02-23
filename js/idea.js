@@ -10,12 +10,11 @@ document.addEventListener('click', function (event) {
   if (event.target.closest('.fa-trash-can')) {
     const card = event.target.closest('.box');
 
-    deleteCard(card); // call function
-
+    deleteCard(card); 
     return;
   }
 
-  // INTERVIEW
+  // interview btn 
   if (event.target.classList.contains('interviewBtn')) {
     const mainCard = event.target.closest('.box');
 
@@ -34,8 +33,7 @@ document.addEventListener('click', function (event) {
     statusAll.innerText = 'INTERVIEW';
 
     interviewHistory.append(copyCard);
-    // interview.innerText = interviewHistory.children.length - 1;
-
+    
     interview.innerText = interviewHistory.querySelectorAll('.box').length;
 
     rejected.innerText = rejectedHistory.querySelectorAll('.box').length;
@@ -125,7 +123,7 @@ function deleteCard(card) {
   interview.innerText = interviewHistory.querySelectorAll('.box').length;
   rejected.innerText = rejectedHistory.querySelectorAll('.box').length;
   total.innerText = cardContainer.querySelectorAll('.box').length;
-  
+
   totalJobCount.innerText = cardContainer.querySelectorAll('.box').length;
 
 }

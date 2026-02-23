@@ -5,20 +5,18 @@ let rejected = document.getElementById("rejected-count")
 
 let cardContainer = document.getElementById("card-container")
 
-// let interviewList = [];
-// let rejectedList = []; 
+
 
 const allFilterBtn = document.getElementById('all-filter-btn');
 const interviewFilterBtn = document.getElementById('interview-filter-btn');
 const rejectedFilterBtn = document.getElementById('rejected-filter-btn');
 
 
-// const mainBox = document.querySelector('main')
+
 
 function calculateCount() {
   const totalCount= total.innerText = cardContainer.children.length; 
-  // interview.innerText = interviewList.children.length; 
-  // rejected.innerText = rejected.children.length; 
+ 
   return totalCount;
 }
 
@@ -72,7 +70,7 @@ function toggleStyle(id) {
     rejectedHistory.style.display = 'block';
 
      const totalJobCount = document.getElementById('total-job-count');
-     totalJobCount.innerText = interviewHistory.querySelectorAll('.box').length;
+     totalJobCount.innerText = rejectedHistory.querySelectorAll('.box').length;
   }
 }
 
