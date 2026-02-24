@@ -10,9 +10,9 @@ const rejectedFilterBtn = document.getElementById('rejected-filter-btn');
 
 
 function calculateCount() {
-  // const totalCount = (total.innerText = cardContainer.children.length);
+  const totalCount = (total.innerText = cardContainer.children.length) - 1 ;
 
-  const totalCount = cardContainer.querySelectorAll('.box').length;
+  // const totalCount = cardContainer.querySelectorAll('.box').length;
   total.innerText = totalCount;
   return totalCount;
 }
