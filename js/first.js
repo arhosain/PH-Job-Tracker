@@ -60,19 +60,12 @@ document.addEventListener('click', function (event) {
     // newFunction('interviewUpdate');
     updateCountForCurrentFilter();
 
-
-   
-
     // test code =======
 
     const company = mainCard.querySelector('.companyName').innerText;
     const position = mainCard.querySelector('.position').innerText;
 
     updateAllStatus(company, position, 'INTERVIEW');
-
-
-
-
   }
 
   // rejected btn
@@ -107,14 +100,12 @@ document.addEventListener('click', function (event) {
     // newFunction('rejectedUpdate');
     updateCountForCurrentFilter();
 
-
     // test code  ==========
 
-const company = mainCard.querySelector('.companyName').innerText;
-const position = mainCard.querySelector('.position').innerText;
+    const company = mainCard.querySelector('.companyName').innerText;
+    const position = mainCard.querySelector('.position').innerText;
 
-updateAllStatus(company, position, 'REJECTED');
-
+    updateAllStatus(company, position, 'REJECTED');
   }
 });
 
@@ -171,6 +162,8 @@ function deleteCard(card) {
   rejected.innerText = rejectedHistory.querySelectorAll('.box').length;
   total.innerText = cardContainer.querySelectorAll('.box').length;
 
+  checkAllTabEmpty();
+
   // totalJobCount.innerText = cardContainer.querySelectorAll('.box').length;
 
   // totalInterviewCount.innerText =
@@ -216,12 +209,6 @@ function updateCountForCurrentFilter() {
   }
 }
 
-
-
-
-
-
-
 //-================ test code. ==================
 
 function updateAllStatus(company, position, newStatus) {
@@ -235,4 +222,17 @@ function updateAllStatus(company, position, newStatus) {
       card.querySelector('.status').innerText = newStatus;
     }
   });
+}
+
+// test
+
+function checkAllTabEmpty() {
+  const totalCards = cardContainer.querySelectorAll('.box').length;
+  const emptyMessage = document.getElementById('emptyMessage');
+
+  if (totalCards === 0) {
+    emptyMessage.classList.remove('hidden');
+  } else {
+    emptyMessage.classList.add('hidden');
+  }
 }
