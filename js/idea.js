@@ -9,18 +9,31 @@ document.addEventListener('click', function (event) {
 
   if (event.target.closest('.fa-trash-can')) {
     const card = event.target.closest('.box');
+    let cardId = card.parentElement.id;
+    console.log(card.parentElement.id);
+    deleteCard(card);
+    if (cardId === 'interview-history') {
+      totalJobCount.innerText =
+        interviewHistory.querySelectorAll('.box').length;
+    }
+    else if (cardId === 'rejected-history') {
+          totalJobCount.innerText =
+            rejectedHistory.querySelectorAll('.box').length; 
 
-    deleteCard(card); 
-    return;
+    }
+      
+      return;
   }
 
-  // interview btn 
+  // interview btn
   if (event.target.classList.contains('interviewBtn')) {
     const mainCard = event.target.closest('.box');
 
+    // stoped duplicating
+
     const currentStatus = mainCard.querySelector('.status').innerText;
     if (currentStatus === 'INTERVIEW') {
-      return; // STOP duplicate
+      return;
     }
 
     const copyCard = mainCard.cloneNode(true);
@@ -33,7 +46,7 @@ document.addEventListener('click', function (event) {
     statusAll.innerText = 'INTERVIEW';
 
     interviewHistory.append(copyCard);
-    
+
     interview.innerText = interviewHistory.querySelectorAll('.box').length;
 
     rejected.innerText = rejectedHistory.querySelectorAll('.box').length;
@@ -42,7 +55,7 @@ document.addEventListener('click', function (event) {
     noJob1.style.display = 'none';
   }
 
-  // REJECTED
+  // rejected btn
   if (event.target.classList.contains('rejectedBtn')) {
     const mainCard = event.target.closest('.box');
 
@@ -126,4 +139,6 @@ function deleteCard(card) {
 
   totalJobCount.innerText = cardContainer.querySelectorAll('.box').length;
 
+  // totalInterviewCount.innerText =
+  //   interviewHistory.querySelectorAll('.box').length;
 }

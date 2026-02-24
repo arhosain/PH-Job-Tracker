@@ -12,6 +12,13 @@ const interviewFilterBtn = document.getElementById('interview-filter-btn');
 const rejectedFilterBtn = document.getElementById('rejected-filter-btn');
 
 
+const totalInterviewCount = document.getElementById(
+  'total-interview-job-count',
+);
+const totalRejectedCount = document.getElementById('total-interview-job-count');
+
+
+
 
 
 function calculateCount() {
@@ -40,12 +47,8 @@ function toggleStyle(id) {
   const rejectedHistory = document.getElementById('rejected-history');
  
 
-  // job-count 
-
+  
  
-
-
-
   cardContainer.style.display = 'none';
   interviewHistory.style.display = 'none';
   rejectedHistory.style.display = 'none';
@@ -55,22 +58,50 @@ function toggleStyle(id) {
     
 
      const totalJobCount = document.getElementById('total-job-count');
-     totalJobCount.innerText = calculateCount(); 
+    totalJobCount.innerText = calculateCount(); 
+    
+    // new 
+totalJobCount.classList.remove('hidden');
+
+totalInterviewCount.classList.add('hidden'); 
+
+
   }
 
   if (id === 'interview-filter-btn') {
     interviewHistory.style.display = 'block';
-    const totalJobCount = document.getElementById('total-job-count');
+
+    // const totalJobCount = document.getElementById('total-job-count');
     totalJobCount.innerText = interviewHistory.querySelectorAll('.box').length;
      
+
+    // new  
+    // totalInterviewCount.innerText =
+    //   interviewHistory.querySelectorAll('.box').length;
+    // totalInterviewCount.classList.remove('hidden')
+    // totalJobCount.classList.add('hidden')
+
     
   }
 
   if (id === 'rejected-filter-btn') {
     rejectedHistory.style.display = 'block';
 
-     const totalJobCount = document.getElementById('total-job-count');
-     totalJobCount.innerText = rejectedHistory.querySelectorAll('.box').length;
+    //  const totalJobCount = document.getElementById('total-job-count');
+    //  totalJobCount.innerText = rejectedHistory.querySelectorAll('.box').length;
+
+    totalJobCount.innerText = rejectedHistory.querySelectorAll('.box').length; 
+
+    // console.log(totalJobCount, rejectedHistory);
+
+    // new
+
+    // totalRejectedCount.innerText =
+    //   rejectedHistory.querySelectorAll('.box').length;
+    // rejectedHistory.classList.remove('hidden');
+    // totalJobCount.classList.add('hidden');
+    // totalInterviewCount.classList.add('hidden');
+    
   }
 }
 
