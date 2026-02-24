@@ -13,6 +13,8 @@ document.addEventListener('click', function (event) {
     let cardId = card.parentElement.id;
     // console.log(card.parentElement.id);
     deleteCard(card);
+    updateCountForCurrentFilter()
+    return
 
     if (cardId === 'interview-history') {
       totalJobCount.innerText =
@@ -27,6 +29,10 @@ document.addEventListener('click', function (event) {
   // interview btn
   if (event.target.classList.contains('interviewBtn')) {
     const mainCard = event.target.closest('.box');
+
+
+  
+    
 
     // stoped duplicating
 
@@ -56,11 +62,14 @@ document.addEventListener('click', function (event) {
     noJob1.style.display = 'none';
 
     // newFunction('interviewUpdate');
+      updateCountForCurrentFilter();
   }
 
   // rejected btn
   if (event.target.classList.contains('rejectedBtn')) {
     const mainCard = event.target.closest('.box');
+ 
+   
 
     const currentStatus = mainCard.querySelector('.status').innerText;
     if (currentStatus === 'REJECTED') {
@@ -88,6 +97,7 @@ document.addEventListener('click', function (event) {
     noJob1.style.display = 'none';
 
     // newFunction('rejectedUpdate');
+     updateCountForCurrentFilter();
   }
 });
 
@@ -144,8 +154,54 @@ function deleteCard(card) {
   rejected.innerText = rejectedHistory.querySelectorAll('.box').length;
   total.innerText = cardContainer.querySelectorAll('.box').length;
 
-  totalJobCount.innerText = cardContainer.querySelectorAll('.box').length;
+  // totalJobCount.innerText = cardContainer.querySelectorAll('.box').length;
 
   // totalInterviewCount.innerText =
   //   interviewHistory.querySelectorAll('.box').length;
+}
+
+
+
+
+
+
+
+
+// ... existing code (interviewHistory, rejectedHistory, etc.) ...
+
+function updateCountForCurrentFilter() {
+  const totalJobSpan = document.getElementById('total-job-count');
+  const allBtn = document.getElementById('all-filter-btn');
+  const interviewBtn = document.getElementById('interview-filter-btn');
+  const rejectedBtn = document.getElementById('rejected-filter-btn');
+  const mainContainer = document.getElementById('card-container');
+  const interviewSection = document.getElementById('interview-history');
+  const rejectedSection = document.getElementById('rejected-history');
+
+  let activeFilter = 'all';
+  if (interviewBtn.classList.contains('bg-blue-400')) {
+    activeFilter = 'interview';
+  } else if (rejectedBtn.classList.contains('bg-blue-400')) {
+    activeFilter = 'rejected';
+  }
+
+  if (activeFilter === 'all') {
+    const count = mainContainer.querySelectorAll('.box').length;
+    totalJobSpan.innerText = count;
+    // No placeholder for main container
+  } else if (activeFilter === 'interview') {
+    const count = interviewSection.querySelectorAll('.box').length;
+    totalJobSpan.innerText = count;
+    const placeholder = interviewSection.querySelector('.no-job-1');
+    if (placeholder) {
+      placeholder.style.display = count === 0 ? 'flex' : 'none';
+    }
+  } else if (activeFilter === 'rejected') {
+    const count = rejectedSection.querySelectorAll('.box').length;
+    totalJobSpan.innerText = count;
+    const placeholder = rejectedSection.querySelector('.no-job-2');
+    if (placeholder) {
+      placeholder.style.display = count === 0 ? 'flex' : 'none';
+    }
+  }
 }

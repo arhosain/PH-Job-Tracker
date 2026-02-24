@@ -1,38 +1,28 @@
-
 let total = document.getElementById('total-count');
 let interview = document.getElementById('interview-count');
-let rejected = document.getElementById("rejected-count") 
+let rejected = document.getElementById('rejected-count');
 
-let cardContainer = document.getElementById("card-container")
-
-
+let cardContainer = document.getElementById('card-container');
 
 const allFilterBtn = document.getElementById('all-filter-btn');
 const interviewFilterBtn = document.getElementById('interview-filter-btn');
 const rejectedFilterBtn = document.getElementById('rejected-filter-btn');
-
 
 const totalInterviewCount = document.getElementById(
   'total-interview-job-count',
 );
 const totalRejectedCount = document.getElementById('total-interview-job-count');
 
-
-
-
-
 function calculateCount() {
-  const totalCount= total.innerText = cardContainer.children.length; 
- 
+  const totalCount = (total.innerText = cardContainer.children.length);
+
   return totalCount;
 }
 
-calculateCount(); 
+calculateCount();
 
- const totalJobCount = document.getElementById('total-job-count');
- totalJobCount.innerText = calculateCount(); 
-
-
+const totalJobCount = document.getElementById('total-job-count');
+totalJobCount.innerText = calculateCount();
 
 function toggleStyle(id) {
   allFilterBtn.classList.remove('bg-blue-400', 'text-white');
@@ -45,48 +35,39 @@ function toggleStyle(id) {
   const cardContainer = document.getElementById('card-container');
   const interviewHistory = document.getElementById('interview-history');
   const rejectedHistory = document.getElementById('rejected-history');
- 
 
-  
- 
   cardContainer.style.display = 'none';
   interviewHistory.style.display = 'none';
   rejectedHistory.style.display = 'none';
 
   if (id === 'all-filter-btn') {
     cardContainer.style.display = 'block';
-    
 
-     const totalJobCount = document.getElementById('total-job-count');
-    totalJobCount.innerText = calculateCount(); 
-    
-    // new 
-// totalJobCount.classList.remove('hidden');
+    const totalJobCount = document.getElementById('total-job-count');
+    totalJobCount.innerText = calculateCount();
 
-// totalInterviewCount.classList.add('hidden'); 
+    // new
+    // totalJobCount.classList.remove('hidden');
 
-
+    // totalInterviewCount.classList.add('hidden');
   }
 
   if (id === 'interview-filter-btn') {
     interviewHistory.style.display = 'block';
- 
-    console.log('interview hi')
-    console.log(interviewHistory.children.length)
 
+    console.log('interview hi');
+    console.log(interviewHistory.children.length);
 
     // const totalJobCount = document.getElementById('total-job-count');
     totalJobCount.innerText = interviewHistory.querySelectorAll('.box').length;
-     
+
     console.log(interviewHistory.querySelectorAll('.box').length);
 
-    // new  
+    // new
     // totalInterviewCount.innerText =
     //   interviewHistory.querySelectorAll('.box').length;
     // totalInterviewCount.classList.remove('hidden')
     // totalJobCount.classList.add('hidden')
-
-    
   }
 
   if (id === 'rejected-filter-btn') {
@@ -95,7 +76,7 @@ function toggleStyle(id) {
     //  const totalJobCount = document.getElementById('total-job-count');
     //  totalJobCount.innerText = rejectedHistory.querySelectorAll('.box').length;
 
-    totalJobCount.innerText = rejectedHistory.querySelectorAll('.box').length; 
+    totalJobCount.innerText = rejectedHistory.querySelectorAll('.box').length;
 
     // console.log(totalJobCount, rejectedHistory);
 
@@ -106,24 +87,15 @@ function toggleStyle(id) {
     // rejectedHistory.classList.remove('hidden');
     // totalJobCount.classList.add('hidden');
     // totalInterviewCount.classList.add('hidden');
-    
   }
-
- 
-
-
-
 }
 
-
-
-
 // function newFunction(id) {
-  
+
 //   if (id === 'interviewUpdate') {
 //     console.log(interviewHistory.children.length);
 //     totalJobCount.innerText = interviewHistory.children.length - 1;
-    
+
 //     toggleStyle('interview-filter-btn');
 
 //   }
@@ -133,22 +105,5 @@ function toggleStyle(id) {
 
 //     toggleStyle('rejected-filter-btn');
 //   }
-  
+
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
