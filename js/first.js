@@ -13,26 +13,22 @@ document.addEventListener('click', function (event) {
     let cardId = card.parentElement.id;
     // console.log(card.parentElement.id);
     deleteCard(card);
-    updateCountForCurrentFilter()
-    return
-
-    if (cardId === 'interview-history') {
-      totalJobCount.innerText =
-        interviewHistory.querySelectorAll('.box').length;
-    } else if (cardId === 'rejected-history') {
-      totalJobCount.innerText = rejectedHistory.querySelectorAll('.box').length;
-    }
-
+    updateCountForCurrentFilter();
     return;
+
+    // if (cardId === 'interview-history') {
+    //   totalJobCount.innerText =
+    //     interviewHistory.querySelectorAll('.box').length;
+    // } else if (cardId === 'rejected-history') {
+    //   totalJobCount.innerText = rejectedHistory.querySelectorAll('.box').length;
+    // }
+
+    // // return;
   }
 
   // interview btn
   if (event.target.classList.contains('interviewBtn')) {
     const mainCard = event.target.closest('.box');
-
-
-  
-    
 
     // stoped duplicating
 
@@ -62,14 +58,26 @@ document.addEventListener('click', function (event) {
     noJob1.style.display = 'none';
 
     // newFunction('interviewUpdate');
-      updateCountForCurrentFilter();
+    updateCountForCurrentFilter();
+
+
+   
+
+    // test code =======
+
+    const company = mainCard.querySelector('.companyName').innerText;
+    const position = mainCard.querySelector('.position').innerText;
+
+    updateAllStatus(company, position, 'INTERVIEW');
+
+
+
+
   }
 
   // rejected btn
   if (event.target.classList.contains('rejectedBtn')) {
     const mainCard = event.target.closest('.box');
- 
-   
 
     const currentStatus = mainCard.querySelector('.status').innerText;
     if (currentStatus === 'REJECTED') {
@@ -97,7 +105,16 @@ document.addEventListener('click', function (event) {
     noJob1.style.display = 'none';
 
     // newFunction('rejectedUpdate');
-     updateCountForCurrentFilter();
+    updateCountForCurrentFilter();
+
+
+    // test code  ==========
+
+const company = mainCard.querySelector('.companyName').innerText;
+const position = mainCard.querySelector('.position').innerText;
+
+updateAllStatus(company, position, 'REJECTED');
+
   }
 });
 
@@ -160,13 +177,6 @@ function deleteCard(card) {
   //   interviewHistory.querySelectorAll('.box').length;
 }
 
-
-
-
-
-
-
-
 // ... existing code (interviewHistory, rejectedHistory, etc.) ...
 
 function updateCountForCurrentFilter() {
@@ -204,4 +214,25 @@ function updateCountForCurrentFilter() {
       placeholder.style.display = count === 0 ? 'flex' : 'none';
     }
   }
+}
+
+
+
+
+
+
+
+//-================ test code. ==================
+
+function updateAllStatus(company, position, newStatus) {
+  const allCards = cardContainer.querySelectorAll('.box');
+
+  allCards.forEach(card => {
+    const cName = card.querySelector('.companyName').innerText;
+    const pos = card.querySelector('.position').innerText;
+
+    if (cName === company && pos === position) {
+      card.querySelector('.status').innerText = newStatus;
+    }
+  });
 }

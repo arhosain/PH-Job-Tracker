@@ -8,10 +8,6 @@ const allFilterBtn = document.getElementById('all-filter-btn');
 const interviewFilterBtn = document.getElementById('interview-filter-btn');
 const rejectedFilterBtn = document.getElementById('rejected-filter-btn');
 
-const totalInterviewCount = document.getElementById(
-  'total-interview-job-count',
-);
-const totalRejectedCount = document.getElementById('total-interview-job-count');
 
 function calculateCount() {
   const totalCount = (total.innerText = cardContainer.children.length);
