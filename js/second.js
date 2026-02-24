@@ -59,7 +59,14 @@ function toggleStyle(id) {
     // const totalJobCount = document.getElementById('total-job-count');
     totalJobCount.innerText = interviewHistory.querySelectorAll('.box').length;
 
-    console.log(interviewHistory.querySelectorAll('.box').length);
+    if (interviewHistory.querySelectorAll('.box').length <= 0) {
+      interviewHistory.querySelector('div').style.display = 'flex';
+   }
+
+ console.log(interviewHistory)
+
+
+    // console.log(interviewHistory.querySelectorAll('.box').length);
 
     // new
     // totalInterviewCount.innerText =
@@ -76,6 +83,11 @@ function toggleStyle(id) {
 
     totalJobCount.innerText = rejectedHistory.querySelectorAll('.box').length;
 
+     if (rejectedHistory.querySelectorAll('.box').length <= 0) {
+       rejectedHistory.querySelector('div').style.display = 'flex';
+       
+     }
+    
     // console.log(totalJobCount, rejectedHistory);
 
     // new
